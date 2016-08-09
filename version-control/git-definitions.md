@@ -16,4 +16,4 @@ A commit effectively a save point in a given repository. A good commit message d
 
 * What is a merge conflict?
 
-A merge conflict occours when two or more individuals have made changes to the exact same part of a given file, and because git is unable to know which change to use, it asks the user to take a look. 
+A merge conflict occours when two or more individuals have made changes to the exact same part of a given file, and because git is unable to know which change to use, it asks the user to take a look.
