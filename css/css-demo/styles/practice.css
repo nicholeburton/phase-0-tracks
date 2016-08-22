@@ -1,10 +1,14 @@
-#contact_info{
+#contact-info, .small_text li{
   font-size:.8em;
 }
 
 .job{
   background-color: #e9e5dc;
-  corner-radius: 2px;
+  border-radius: 10px;
   padding: 10px;
-  margin:10px auto;
+  margin-top: 10px;
+}
+
+a:hover{
+  color: red;
 }
