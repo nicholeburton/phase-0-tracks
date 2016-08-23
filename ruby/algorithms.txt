@@ -1,0 +1,7 @@
+- Wait until you hear a number. A number can be asked for at any time.
+  - If the number is not valid  (1 ~ top floor), do nothing.
+  - Else if the number is the current floor, open the elevator doors.
+  - Else if the number is valid (and it is not the current floor), push the requested floor number.
+    - Wait until you arrive at a floor.
+      - If the floor is not the requested floor, do nothing.
+      - If the floor is the requested floor, listen for a requested number.
