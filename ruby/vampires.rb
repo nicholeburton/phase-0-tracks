@@ -30,6 +30,28 @@ def check_age_accuracy(age_to_check, year_to_check)
 	end
 end
 
+#check for allergies.
+def allergy_check_is_vampire
+	isVamp = false
+	allergen = nil
+	puts "Tell us your alleries one at a time."
+	until ((allergen == "done")||(isVamp == true))
+		# get the user input
+		puts "allergen:"
+		allergen = gets.chomp
+
+		if allergen == "sunshine"
+			puts "Definetly a vampire."
+			isVamp = true
+		elsif allergen == "done"
+			#do nothing
+		end
+	#	puts "boolean: #{((allergen == "done")||(isVamp == true))}"
+	end
+end
+
+#employee processor based on amount
+
 def process_employees (amount)
 	until amount == 0
 		puts "Employee #{amount}, processing now."
@@ -59,16 +81,19 @@ def process_employees (amount)
 		# Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
 		if ((name == "Drake Cula") || (name == "Tu Fang"))
 		puts "Definetly a vampire."
+			break
+		elsif allergy_check_is_vampire
+			puts "Definetly a vampire."
+			break
 		# If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, the result is “Probably not a vampire.”
-		elsif verified_age && (garlic_bread || insurance)
+		elsif (verified_age && (garlic_bread || insurance))
 			puts "Probably not a vampire."
 		# If the employee got their age wrong, and hates garlic bread or waives insurance, the result is “Probably a vampire.”
-		elsif !verified_age && (!garlic_bread || !insurance)
+		elsif (!verified_age && (!garlic_bread || !insurance))
 			puts "Probably a vampire."
 		# If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, the result is “Almost certainly a vampire.”
-		elsif !verified_age && !garlic_bread && !insurance
-		puts "Almost certainly a vampire."
-
+		elsif (!verified_age && !garlic_bread && !insurance)
+			puts "Almost certainly a vampire."
 		else
 			"results inconclusive."
 		end
@@ -76,6 +101,7 @@ def process_employees (amount)
 		amount = amount - 1
 	end
 	puts "All employees have been processed. Thank you for using the WIB 2.0. Good day."
+	puts "...Actually, never mind! What do these questions have to do with anything? Let's all be friends."
 end
 
 #PROCESS EMPLOYEES
