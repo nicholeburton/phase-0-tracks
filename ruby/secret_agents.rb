@@ -24,20 +24,24 @@ encrypt(password)
 
 def decrypt (password)
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
-	alphabet_index = 0
+	alphabet_index =
 	password_index = 0
 	while password_index < password.length
-		puts "alphabet[alphabet_index]: #{alphabet[alphabet_index]}"
-		puts "password[password_index]: #{password[password_index]}"
+	#	puts "alphabet[alphabet_index]: #{alphabet[alphabet_index]}"
+	#	puts "password[password_index]: #{password[password_index]}"
 	# if the letter in the password matches the letter in the alphabet, we should assign it the letter before.
+#	puts "#{alphabet[8] == password[0]}"
+#	puts "Alphabet[8]: #{alphabet[8]}"
+#	puts "Password[0]: #{password[0]}"
 		if alphabet[alphabet_index] == password[password_index]
-			puts "alphabet[alphabet_index]: #{alphabet[alphabet_index - 1]}"
+		#	puts "inside positive if statement"
 			password[password_index] = alphabet[(alphabet_index - 1)]
 			password_index += 1
+			alphabet_index = 0
 		elsif alphabet[alphabet_index] != password[password_index]
+		#	puts "inside negative if statement"
 			alphabet_index += 1
 		end
-		alphabet_index = 0
 	end
 	p password
 end
