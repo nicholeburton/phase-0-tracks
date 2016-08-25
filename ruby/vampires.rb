@@ -41,12 +41,22 @@ def allergy_check_is_vampire
 		allergen = gets.chomp
 
 		if allergen == "sunshine"
-			puts "Definetly a vampire."
 			isVamp = true
 		elsif allergen == "done"
 			#do nothing
 		end
 	#	puts "boolean: #{((allergen == "done")||(isVamp == true))}"
+	end
+end
+
+def vampire_initial_check(name)
+	# Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
+	if ((name == "Drake Cula") || (name == "Tu Fang"))
+		vampire = true
+	elsif allergy_check_is_vampire
+		vampire = true
+	else
+		vampire = false
 	end
 end
 
@@ -78,25 +88,27 @@ def process_employees (amount)
 		# check the age and assign to variable for the following logic checks, for simplicity.
 		verified_age = check_age_accuracy(age, birth_year)
 
-		# Even if the employee is an amazing liar otherwise, anyone going by the name of “Drake Cula” or “Tu Fang” is clearly a vampire, because come on. In that case, you should print “Definitely a vampire.”
-		if ((name == "Drake Cula") || (name == "Tu Fang"))
-		puts "Definetly a vampire."
-			break
-		elsif allergy_check_is_vampire
+		#Checking for any vampireness before we even get into the rest of the questions.
+		if !vampire_initial_check(name)
+      # if the name is fine, we will proceed with the rest of the process.
+			# If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, the result is “Probably not a vampire.”
+			if (verified_age && (garlic_bread || insurance))
+				puts "Probably not a vampire."
+			# If the employee got their age wrong, and hates garlic bread or waives insurance, the result is “Probably a vampire.”
+      elsif (!verified_age && !(garlic_bread || insurance))
+				puts "Probably a vampire."
+			# If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, the result is “Almost certainly a vampire.”
+			elsif (!verified_age && !garlic_bread && !insurance)
+				puts "Almost certainly a vampire."
+			else
+				"results inconclusive."
+			end
+    # if the name is not fine, we will declare them a vampire and move on.
+		elsif vampire_initial_check(name)
 			puts "Definetly a vampire."
-			break
-		# If the employee got their age right, and is willing to eat garlic bread or sign up for insurance, the result is “Probably not a vampire.”
-		elsif (verified_age && (garlic_bread || insurance))
-			puts "Probably not a vampire."
-		# If the employee got their age wrong, and hates garlic bread or waives insurance, the result is “Probably a vampire.”
-		elsif (!verified_age && (!garlic_bread || !insurance))
-			puts "Probably a vampire."
-		# If the employee got their age wrong, hates garlic bread, and doesn’t want insurance, the result is “Almost certainly a vampire.”
-		elsif (!verified_age && !garlic_bread && !insurance)
-			puts "Almost certainly a vampire."
-		else
-			"results inconclusive."
-		end
+	  end
+
+    #Display employee number and reduce amount by 1 to continue or stop loop.
 		puts "Employee #{amount} processed."
 		amount = amount - 1
 	end
