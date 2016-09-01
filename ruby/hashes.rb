@@ -32,16 +32,15 @@ end
 p form_values
 
 #ask for update
-puts "What category do you want to update? ("none" if nothing)"
+puts "What category do you want to update? ('none' if nothing)"
 
 update = gets.chomp
 
-break if update == "none"
-else
+if update != "none"
 
   puts "What would you like to update #{update} to?"
-  #this will lowercase, replace spacse with underscores, and convert to symbol.
-  update = (gets.chomp).parameterize.underscore.to_sym
+  #convert to symbol
+  update = (gets.chomp).to_sym
   form_values[update] = gets.chomp
   puts "Here's the data again"
   p form_values
