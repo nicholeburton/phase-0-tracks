@@ -4,27 +4,28 @@
 # declare password
 password = "hello"
 #ifmmp
-
-password = "hello"
-#ifmmp
-
 def encrypt (password)
   index = 0
   while index < password.length
-    #append to encrypted_password, one letter at a time, the advanced letter.
-    password[index] = password[index].next
-    index += 1
+    #append to encrypted_password, one letter at a time, the advanced letter
+    if password[index] == "z"
+    	password[index] = "a"
+    	index += 1
+    elsif password[index] != "z"
+	  password[index] = password[index].next
+	  index += 1
+    end
   end
   p password
 end
 
-encrypt(password)
+encrypt("zed")
 
 #define decrypt
 
 def decrypt (password)
 	alphabet = "abcdefghijklmnopqrstuvwxyz"
-	alphabet_index =
+	alphabet_index = 0
 	password_index = 0
 	while password_index < password.length
 	#	puts "alphabet[alphabet_index]: #{alphabet[alphabet_index]}"
@@ -46,7 +47,7 @@ def decrypt (password)
 	p password
 end
 
-decrypt (password)
+decrypt ("afe")
 
 # get the first character of the password string
 # find the index position in the alphabet
