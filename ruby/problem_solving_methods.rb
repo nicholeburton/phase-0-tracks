@@ -40,3 +40,30 @@ def fib
     p sequence
   end
 end
+
+# Bubble sort
+
+# name method that takes parameter array.
+def bubble_sort (array)
+  # assign to variable length of array.
+  n = array.length
+  # loop through method with array
+  loop do
+    # declare boolean that keeps track of whether or not a given number has been swapped.
+    swapped = false
+    # start a loop for length of array minus 1 times.
+    (n-1).times do |i|
+      # if an index is greater than the index next to it...
+      if array[i] > array[i+1]
+        # ...switch the array index with the one next to it.
+        array[i], array[i+1] = array[i+1], array[i]
+        # mark our boolean as true.
+        swapped = true
+      end
+    end
+  break if not swapped
+  end
+  array
+end
+# break if everything has been swapped.
+# return the sorted array.
