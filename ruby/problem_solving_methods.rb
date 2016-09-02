@@ -14,6 +14,29 @@ def search_array (array, search_number)
   end
 end
 
-my_array = [42, 89, 23, 1]
+# fib sequence
 
-p search_array(my_array, 2)
+def fib
+  sequence = nil
+  puts "What number would you like?"
+  user_input = gets.chomp.to_i
+
+  # get user input
+  # as long as the user input is not 0
+  if user_input != 0
+    sequence = [0]
+    counter = 1
+    while counter < user_input
+      if sequence[-1] == 0
+        # sequence = [0]
+        sequence << 1
+        # sequence = [0, 1]
+        counter += 1
+      else
+        sequence << sequence[-1] + sequence[-2]
+        counter += 1
+      end
+    end
+    p sequence
+  end
+end
