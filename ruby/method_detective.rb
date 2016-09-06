@@ -25,13 +25,13 @@
 "The case of the disappearing last letter".chop
 # => "The case of the disappearing last lette"
 
-"The mystery of the missing first letter".chomp("T")
+"The mystery of the missing first letter".chop("T")
 # => "he mystery of the missing first letter"
 
-"Elementary,    my   dear        Watson!".<???>
+"Elementary,    my   dear        Watson!".squeeze
 # => "Elementary, my dear Watson!"
 
-"z".<???>
+"z".ord
 # => 122
 # (What is the significance of the number 122 in relation to the character z?)
 # It's lowercase, not uppercase.
