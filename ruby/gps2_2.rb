@@ -8,6 +8,17 @@
   # print the list to the console [can you use one of your other methods here?]
 # output: hash with key: item, value: quantity for each LI
 
+def create_list (items)
+  item_array = []
+  item_array = items.split(' ')
+  item_hash = {}
+  item_array.each do |list_item|
+    item_hash[list_item] = 0
+  end
+end
+
+# create_list("Carrots, Apples, Peaches")
+
 # Method to add an item to a list
 # input: item name and optional quantity (string)
 # steps: SPLIT string into array ([val1,val2.TO_I])
