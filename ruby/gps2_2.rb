@@ -25,6 +25,11 @@ end
 # use the 0th and 1th values of the array to insert into hash as new item
 # output: hash + new item
 
+# assuming item being added is a new item.
+def add_item (item, optional_quantity = 0)
+  item_hash[item] = optional_quantity
+end
+
 # Applies to first applicable item found the hash
 # Method to remove an item from the list
 # input: string (key; item)
@@ -33,12 +38,20 @@ end
   # remove the key + value from hash
 # output: hash - item
 
+def remove_item (item)
+    item_hash[item].delete
+end
+
 # Method to update the quantity of an item
 # input: string (key; item), int (value; + quantity)
 # steps:
   # find the key in the hash
-  # update value to be value += quantity
+  # update value to be value = quantity
 # output: hash with updated item quantity
+
+def update_quantity (item, quantity)
+  item_hash[item] = quantity
+end
 
 # Method to print a list and make it look pretty
 # input: hash
@@ -46,3 +59,9 @@ end
   # iterate through hash using block
   # PUTS "#{key} : #{value}"
 # output: human readable list of key + value pairs
+
+def print_list
+  item_hash.each{ |item, quantity|
+    puts "#{item}: #{quantity}"
+  }
+end
