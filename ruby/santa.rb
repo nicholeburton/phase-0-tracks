@@ -7,24 +7,26 @@ class Santa
     @age = 0
   end
 
-  # def speak
-  #   puts "#{@name} says, 'Ho, ho ho! Haaaaaapy holidays!''"
-  # end
-  #
-  # def eat_milk_and_cookies (cookie_type)
-  #   puts "#{@name} says, 'That was a good #{cookie_type}!''"
-  # end
-  #
-  # def land(location)
-  #   puts "successfully landed in #{location}"
-  #   @location = location
-  # end
-  #
-  # def about
-  #   puts "Name: #{@name}"
-  #   puts "Gender: #{@gender}"
-  #   puts "Location: #{@location}"
-  # end
+  def celebrate_birthday
+    @age += 1
+  end
+
+  def get_mad_at(reindeer)
+    @reindeer_ranking.delete(reindeer)
+    @reindeer_ranking << reindeer
+  end
+
+  def gender=(new_gender)
+    @gender = new_gender
+  end
+
+  def age
+    @age
+  end
+
+  def ethnicity
+    @ethnicity
+  end
 
 end
 
