@@ -1,5 +1,11 @@
 class Santa
 
+  # attr_reader
+  # attr_writer
+
+  # getter and setter methods
+  attr_accessor :name, :gender
+
   def initialize (ethnicity, gender)
     @ethnicity = ethnicity
     @gender = gender
@@ -16,18 +22,6 @@ class Santa
     @reindeer_ranking << reindeer
   end
 
-  def gender=(new_gender)
-    @gender = new_gender
-  end
-
-  def age
-    @age
-  end
-
-  def ethnicity
-    @ethnicity
-  end
-
 end
 
 santas = []
@@ -38,7 +32,10 @@ example_genders.length.times do |i|
   santas << Santa.new(example_genders[i], example_ethnicities[i])
 end
 
-p santas
+santas[1].name = "Mommy"
+p santas[1]
+
+# p santas
 # santa = Santa.new("Molly", "gender non-conforming")
 # santa.about
 # santa.speak
