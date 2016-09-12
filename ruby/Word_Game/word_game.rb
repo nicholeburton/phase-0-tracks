@@ -33,9 +33,9 @@ class Word_Guess_Game
   attr_accessor :word, :word_length, :guesses_left, :guess_status, :word_expanded
 
   def initialize(word)
-    @word = word
-    @word_length = word.length
-    @guesses_left = word.length
+    @word = word.squeeze
+    @word_length = @word.length
+    @guesses_left = @word.length
 
     # guess_status is a set of user-readable underscores and letters. ex. "molly" will become "_ _ _ _ _" / "_ o _ _ _", etc.
     @guess_status = ""
@@ -64,7 +64,7 @@ class Word_Guess_Game
     @guess_status[placement] = char
   end
 
-  def my_method
+  def play_game
     until ((@guesses_left == 0) || (compare_to_word))
       # take letter from user
       # search original word for letters
@@ -79,28 +79,38 @@ class Word_Guess_Game
       #   reduce count var
       puts "Guess a letter. #{@guesses_left} guesses left."
       user_guess = gets.chomp
-      if @word.include? "#{user_guess}"
-        reveal_char(user_guess)
-        @guesses_left -= 1
-      elsif !@word.include? "#{user_guess}"
-        @guesses_left -=1
-      end
+      if @guess_status.include? "#{user_guess}"
+        # do nothing
+      elsif @word.include? "#{user_guess}"
+          reveal_char(user_guess)
+          @guesses_left -= 1
+        elsif !@word.include? "#{user_guess}"
+          @guesses_left -=1
+        end
       p @guess_status
     end
+
+    if @guess_status == @word_expanded
+      puts "You won! #{@word} is the correct answer. Good job!"
+    else
+      puts "You lost! Too bad. Try again."
+    end
+
   end
-
-  # if @guess_status_smushed == @word
-  #   puts "You won! #{@word} is the correct answer. Good job!"
-  # else
-  #   puts "You lost. try again."
-
 end
 
-my_game = Word_Guess_Game.new("frank")
-puts "#{my_game.word} word"
-puts "#{my_game.word_expanded} Expanded word"
-puts "#{my_game.guess_status} User readable guess status#"
-puts "#{my_game.word_length} Word length"
-puts "#{my_game.guesses_left} Guesses left"
+# puts "Player 1, what word woud you like Player 2 to guess? Remember: We're going to squeeze out any duplicate letters in words due to scope creep. Sorry."
+# player1_word = gets.chomp
+#
+# game = Word_Guess_Game.new(player1_word)
+# game.play_game
 
-my_game.my_method
+# testing driver code
+# my_game = Word_Guess_Game.new("frank")
+# puts "#{my_game.word} word"
+# puts "#{my_game.word_expanded} Expanded word"
+# puts "#{my_game.guess_status} User readable guess status#"
+# puts "#{my_game.word_length} Word length"
+# puts "#{my_game.guesses_left} Guesses left"
+#
+# my_game.play_game
