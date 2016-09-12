@@ -62,7 +62,10 @@ class Word_Guess_Game
   def reveal_char(char)
     placement = (@word.index(char)*2)
     @guess_status[placement] = char
+    @guess_status
   end
+
+  # I'm putting this inside the class, but I recognize that it would probably be more appropriate to put this outside of the class.
 
   def play_game
     until ((@guesses_left == 0) || (compare_to_word))
