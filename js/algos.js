@@ -18,4 +18,29 @@ function longest_phrase(phrase) {
   return longest_phrase;
 }
 
+function compare_objects(object1, object2){
+
+  // assume no match until proven otherwise.
+  has_match = false;
+
+  //go through each item in object 1...
+  for (i = 0; i < /*length of object 1*/; i++){
+
+  // ...and compare to each item in object 2.
+    for (j = 0; j < /*length of object 2*/;, j++){
+      if /*match*/{
+        has_match = true
+        // break
+      }
+    }
+
+  }
+
+  // return result.
+  return has_match;
+}
+
+// driver for longest_phrase
 console.log(longest_phrase(["long phrase","longest phrase","longer phrase"]));
+console.log(longest_phrase(["Garnet", "Pearl", "Steven"]));
+console.log(longest_phrase(["Hello Kitty", "Rilakkuma", "My Melody"]))
