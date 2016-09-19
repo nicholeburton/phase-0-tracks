@@ -56,7 +56,7 @@ function generate_random_array(length){
 
   var alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
-  for (i = 0; i == length; i++){
+  for (i = 0; i < length; i++){
     var string = "";
     //determine string length by choosing a random number, rounded down, and multiplied to create a non-negative, non-decimal number.
     string_length = Math.floor((Math.random() * 10) + 1);
@@ -82,3 +82,7 @@ function generate_random_array(length){
 // console.log(compare_objects(object1, object2));
 
 // driver code for generate_random_array
+
+for (k = 0; k < 10; k++){
+  console.log("Longest word in this array: " + longest_phrase(generate_random_array(5)));
+}
