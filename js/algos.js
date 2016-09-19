@@ -70,16 +70,16 @@ function generate_random_array(length){
   return string_array;
 }
 
-// // driver for longest_phrase
-// console.log(longest_phrase(["long phrase","longest phrase","longer phrase"]));
-// console.log(longest_phrase(["Garnet", "Pearl", "Steven"]));
-// console.log(longest_phrase(["Hello Kitty", "Rilakkuma", "My Melody"]));
+// driver for longest_phrase
+console.log(longest_phrase(["long phrase","longest phrase","longer phrase"]));
+console.log(longest_phrase(["Garnet", "Pearl", "Steven"]));
+console.log(longest_phrase(["Hello Kitty", "Rilakkuma", "My Melody"]));
 
 
-// //driver code for compare_objects
-// var object1 = {name: "Steven", bage: 44};
-// var object2 = {name: "Tamir", bage: 44};
-// console.log(compare_objects(object1, object2));
+//driver code for compare_objects
+var object1 = {name: "Steven", bage: 44};
+var object2 = {name: "Tamir", bage: 44};
+console.log(compare_objects(object1, object2));
 
 // driver code for generate_random_array
 
