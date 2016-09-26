@@ -96,7 +96,9 @@ end
 
 def fetch_review(db)
   puts "For which game would you like to check a review for?"
-  game = gets.chomp
+  game_name = gets.chomp
+# will need to join the game and the review table then print the info.
+  review = db.execute("SELECT game_name, game_hours FROM games JOIN")
 
 end
 
