@@ -109,7 +109,7 @@ class Game_reviews
 
   end
 
-  def fetch_review
+  def fetch_reviews
   #  puts "For which game would you like to check a review for? Say 'all' if you would like to see everything."
   #  game_name = gets.chomp
   # will need to join the game nd the review table then print the info.
@@ -125,31 +125,42 @@ class Game_reviews
     end
   end
 
+  def fetch_games
+    puts "Here's the gamems you've reviewed:"
+    games = @db.execute("SELECT console_name, game_name, game_hours FROM games AS g INNER JOIN consoles AS c where g.console_id = c.console_id")
+    games.each do |game|
+      puts "#{game['game_name']} for #{game['console_name']}, #{game['game_hours']} hours."
+      puts ""
+    end
+    puts "enter 'print reviews' to see what you had to say about them."
+  end
+
 end
 
 my_reviews = Game_reviews.new(db)
 
 user_input = ""
+puts "Welcome to the game review data centre. What would you like to do?"
 
-until user_input = 'quit'
-  puts "Welcome to the game review data centre. What would you like to do?"
+until user_input == 'done'
+
   puts "'review a game' will let you review a new game."
   puts "'print reviews' will show all of the reviews you've done so far."
   puts "'view games' will show all of the games you've played."
-  puts "'quit' will quit."
+  puts "'done' will quit."
   user_input = gets.chomp
 
   if user_input == "review a game"
-
-  elsif user_input = "print reviews"
-
-  elsif user_input = "view games"
-
-  elsif user_input = "quit"
-
+    my_reviews.submit_review
+  elsif user_input == "print reviews"
+    my_reviews.fetch_reviews
+  elsif user_input == "view games"
+    my_reviews.fetch_games
+  elsif user_input == "done"
+    puts "Thanks for playing!"
   else
     puts "Sorry, that's not a command I recognize. Try again."
+    puts ""
   end
 
-  puts "Thanks for playing!"
 end
