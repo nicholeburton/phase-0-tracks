@@ -1,68 +1,60 @@
 require 'sqlite3'
 require 'faker'
 
-db = SQLite3::Database.new("tasks.db")
+db = SQLite3::Database.new("videogames.db")
 db.results_as_hash = true
 
 # create strings
 
-create_task_table = <<-SQL
-  CREATE TABLE IF NOT EXISTS tasks(
-    task_id INTEGER PRIMARY KEY,
-    task_name VARCHAR(255),
-    completed BOOLEAN
-  );
-SQL
-
-create_location_table = <<-SQL
-  CREATE TABLE IF NOT EXISTS locations(
-    location_id INTEGER PRIMARY KEY,
-    location VARCHAR(255)
+create_console_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS consoles(
+    console_id INTEGER PRIMARY KEY,
+    console_name VARCHAR(255)
   )
 SQL
 
-create_task_list = <<-SQL
-  CREATE TABLE IF NOT EXISTS task_list(
-    list_item_id INTEGER PRIMARY KEY,
-    location_id INT,
-    task_id INT,
-    FOREIGN KEY (location_id) REFERENCES locations(location_id),
-    FOREIGN KEY (task_id) REFERENCES tasks(task_id)
+create_game_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS games(
+    game_id INTEGER PRIMARY KEY,
+    game_name VARCHAR(255),
+    game_hours INT,
+    review_id VARCHAR (255),
+    FOREIGN KEY (review_id) REFERENCES game_review(review_id)
   )
 SQL
+
+create_review_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS reviews(
+    review_id INTGGER PRIMARY KEY,
+    stars INT,
+    comment VARCHAR(255),
+    console_id INT,
+    game_id INT,
+    FOREIGN KEY (console_id) REFERENCES consoles(console_id),
+    FOREIGN KEY (game_id) REFERENCES games(game_id)
+  )
+SQL
+
 
 # create tables
 
-db.execute(create_task_table)
-db.execute(create_date_table)
-db.execute(create_task_list)
+db.execute(create_console_table)
+db.execute(create_game_table)
+db.execute(create_review_table)
 
 # management methods
 
-def collect_tasks
-  input = ""
-  tasks = {}
-  until input == "done"
-    puts "Your task: "
-    task = gets.chomp
-    puts "Task location: "
-    location = gets.chomp
-    tasks[task] = location;
-  end
-  return tasks
-end
 
-def print_task_list (list) #table
-  list.each do |list_item|
-    puts "Task: #{list_item[task]}"
-    puts "Location: #{list_item[location]}"
-    puts "Completed? #{list_item[completed]}"
-    puts ""
-  end
-end
-
-def print_location_tasks (list, location)
-  list.each do |list_item|
-
-  end
+def review_game(db)
+  puts "What game would you like to review?"
+  game = gets.chomp
+  puts "What console is it on?"
+  console = gets.chomp
+  puts "How long is it in hours?"
+  hours = gets.chomp
+  puts "Thanks. And what do you have to say about it?"
+  review_comment = gets.chomp
+  puts "How many stars would you give it?"
+  stars = gets.chomp
+  puts "Thanks a lot! We've documented your review."
 end
