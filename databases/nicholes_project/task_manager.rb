@@ -113,12 +113,14 @@ class Game_reviews
   #  puts "For which game would you like to check a review for? Say 'all' if you would like to see everything."
   #  game_name = gets.chomp
   # will need to join the game nd the review table then print the info.
-    reviewed_games =  @db.execute("SELECT console_name, game_name, game_hours, stars, comment FROM consoles AS c INNER JOIN games AS g ON c.console_id = g.console_id INNER JOIN reviews r ON r.game_id = g.game_id")
-    p reviewed_games
+    reviewed_games =  @db.execute("SELECT console_name, game_name, game_hours, stars, comment FROM consoles AS c INNER JOIN games AS g ON c.console_id = g.console_id INNER JOIN reviews r ON r.review_id = g.review_id")
+
+    # p reviewed_games
+    puts "Here's what you've reviewed so far: "
+    puts ""
     reviewed_games.each do |game|
-      puts ""
       puts "Review for #{game['game_name']}, a #{game['game_hours']} hour game for the #{game['console_name']}:"
-      puts "#{game['stars']} stars: #{game['comment']}"
+      puts "#{game['stars']} stars; #{game['comment']}"
       puts ""
     end
   end
@@ -127,9 +129,27 @@ end
 
 my_reviews = Game_reviews.new(db)
 
-# 2.times do
-#   my_reviews.submit_review
-# end
+user_input = ""
 
-# p assign_console_id("Wii")
-my_reviews.fetch_review
+until user_input = 'quit'
+  puts "Welcome to the game review data centre. What would you like to do?"
+  puts "'review a game' will let you review a new game."
+  puts "'print reviews' will show all of the reviews you've done so far."
+  puts "'view games' will show all of the games you've played."
+  puts "'quit' will quit."
+  user_input = gets.chomp
+
+  if user_input == "review a game"
+
+  elsif user_input = "print reviews"
+
+  elsif user_input = "view games"
+
+  elsif user_input = "quit"
+
+  else
+    puts "Sorry, that's not a command I recognize. Try again."
+  end
+
+  puts "Thanks for playing!"
+end
