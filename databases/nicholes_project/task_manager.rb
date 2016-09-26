@@ -14,21 +14,40 @@ create_task_table = <<-SQL
   );
 SQL
 
-create_date_table = <<-SQL
-  CREATE TABLE IF NOT EXISTS dates(
-    date_id INTEGER PRIMARY KEY,
-    date DATE
+create_location_table = <<-SQL
+  CREATE TABLE IF NOT EXISTS locations(
+    location_id INTEGER PRIMARY KEY,
+    location VARCHAR(255)
   )
 SQL
 
 create_task_list = <<-SQL
   CREATE TABLE IF NOT EXISTS task_list(
     list_item_id INTEGER PRIMARY KEY,
-    date_id DATE,
+    location_id INT,
     task_id INT,
-    FOREIGN KEY (date_id) REFERENCES dates(date_id),
+    FOREIGN KEY (location_id) REFERENCES locations(location_id),
     FOREIGN KEY (task_id) REFERENCES tasks(task_id)
   )
 SQL
 
-# create table
+# create tables
+
+db.execute(create_task_table)
+db.execute(create_date_table)
+db.execute(create_task_list)
+
+# management methods
+
+def collect_tasks
+  input = ""
+  tasks = {}
+  until input == "done"
+    puts "Your task: "
+    task = gets.chomp
+    puts "Task location: "
+    location = gets.chomp
+    tasks[task] = location;
+  end
+  return tasks
+end
