@@ -51,3 +51,18 @@ def collect_tasks
   end
   return tasks
 end
+
+def print_task_list (list) #table
+  list.each do |list_item|
+    puts "Task: #{list_item[task]}"
+    puts "Location: #{list_item[location]}"
+    puts "Completed? #{list_item[completed]}"
+    puts ""
+  end
+end
+
+def print_location_tasks (list, location)
+  list.each do |list_item|
+
+  end
+end
