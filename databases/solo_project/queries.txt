@@ -41,3 +41,12 @@ Michael Bay|Project Manager|Project Managers
 Delete an item that meets some condition (you can choose a condition that makes sense).
 
 sqlite> DELETE FROM employees WHERE name = "Michael Bay";
+
+Try a few different joins in your database
+
+SELECT employees.name, teams.team_name FROM employees INNER JOIN teams ON employees.team_id = teams.team_id;
+Beyonce|Branding
+Grace Boogers|UI Design
+Rachel Unicorn|Front End
+Michelle Visage|Back End
+Rachel Ray|People Managers
