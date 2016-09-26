@@ -17,3 +17,22 @@ How do you view the data of all three tables for just one particular business?
 
 sqlite> SELECT * FROM users AS us iNNER JOIN reviews as rev ON us.user_id = rev.user_id INNER JOIN businesses bu ON rev.business_id = bu.business_id WHERE bu.business_id = 1;
 1|Bradford|Pitt|1|5|Best wedding ever!|1|1|1|Grundy Hollow Wedding Chapel
+
+schema:
+
+facebook users
+id INTEGER PRIMARY KEY
+first_name VARCHAR(255)
+last_name VARCHAR(255)
+
+facebook comment
+id INTEGER PRIMARY KEY
+time VARCHAR(255)
+comment VARCHAR (255)
+attachment_id INT
+sender_id INT
+receipient_id INT
+
+attachment
+id INTEGER PRIMARY KEY
+link VARCHAR(255)
