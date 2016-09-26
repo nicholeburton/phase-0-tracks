@@ -1,0 +1,19 @@
+
+You've joined two tables before. How do you join three?
+
+sqlite> SELECT * FROM users AS us iNNER JOIN reviews as rev ON us.user_id = rev.user_id INNER JOIN businesses bu ON rev.business_id = bu.business_id;
+1|Bradford|Pitt|1|5|Best wedding ever!|1|1|1|Grundy Hollow Wedding Chapel
+2|Mandy|Kaling|2|3|There weren't any strobe lights.|2|2|2|Amir's Towing
+4|Steven|Wonder|3|4|Feeling like a renewed yogi.|4|4|4|Lotus Yoga
+
+There are some repetitive columns if we choose to view all fields. Choose instead to just view the user's names, the business name, the star rating, and the comment.
+
+sqlite> SELECT first_name, last_name, stars, comment FROM users AS us iNNER JOIN reviews as rev ON us.user_id = rev.user_id INNER JOIN businesses bu ON rev.business_id = bu.business_id;
+Bradford|Pitt|5|Best wedding ever!
+Mandy|Kaling|3|There weren't any strobe lights.
+Steven|Wonder|4|Feeling like a renewed yogi.
+
+How do you view the data of all three tables for just one particular business?
+
+sqlite> SELECT * FROM users AS us iNNER JOIN reviews as rev ON us.user_id = rev.user_id INNER JOIN businesses bu ON rev.business_id = bu.business_id WHERE bu.business_id = 1;
+1|Bradford|Pitt|1|5|Best wedding ever!|1|1|1|Grundy Hollow Wedding Chapel
